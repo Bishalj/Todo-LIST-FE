@@ -1,0 +1,36 @@
+.box{
+    float: left;
+    width: 20%;
+    height: 250px;
+    border:  solid 1px;
+    border-radius: 30px;
+    margin:20px;
+    border-color: rgb(116, 116, 190);
+    background-color: lightgoldenrodyellow;
+    opacity: 0.7;
+}
+.innerBox{
+    padding: 15px;
+    overflow: auto;
+    word-wrap: none;
+}
+
+.input{
+    width: 65%;
+}
+
+.btn{
+    float: left;
+    position: relative  ;
+
+}
+.title{
+    background-color: black;
+    color: wheat;
+}
+
+.label{
+    /* font-size: 20px; */
+    font-style: italic;
+    font-weight: bold;
+}
