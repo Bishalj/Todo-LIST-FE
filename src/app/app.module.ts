@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { TaskListComponent } from './task-list/task-list.component';
-import { AddUpdateTaskComponent } from './add-update-task/add-update-task.component';
-import {FormsModule} from '@angular/forms'
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { HttpClientModule } from '@angular/common/http';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -15,11 +15,12 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     TaskListComponent,
-    AddUpdateTaskComponent
+    SearchPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
   providers: [],

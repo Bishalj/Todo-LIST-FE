@@ -1,17 +1,17 @@
 .box{
     float: left;
-    width: 20%;
-    height: 250px;
+    width: 29%;
+    height: 300px;
     border:  solid 1px;
-    border-radius: 30px;
+    border-radius: 15px;
     margin:20px;
-    border-color: rgb(116, 116, 190);
-    background-color: lightgoldenrodyellow;
+    border-color: lightblue;
+    background-color: beige;
     opacity: 0.7;
+    overflow: auto;
 }
 .innerBox{
     padding: 15px;
-    overflow: auto;
     word-wrap: none;
 }
 
@@ -33,4 +33,18 @@
     /* font-size: 20px; */
     font-style: italic;
     font-weight: bold;
+}
+
+.btnPos{
+    float: right;
+    margin: 2px;
+}
+
+.titleData{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.margin{
+    margin: 2%;
 }

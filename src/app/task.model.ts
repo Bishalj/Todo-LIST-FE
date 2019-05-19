@@ -1,6 +1,6 @@
 export class Task{
     public  _id:string;
-	public  taskDetail:string;
+    public  taskDetail:string;
 	public  dueDate: Date;
 	public  label:string;
 	public  status:string;

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Status, Label, Task } from '../task.model';
 import { TaskApiService } from '../task-api.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-task-list',
@@ -8,29 +9,42 @@ import { TaskApiService } from '../task-api.service';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent implements OnInit {
-
+  searchData:string = "";
+  taskDetails: FormGroup;
   taskList:Task[] = [];
 label:Set<String> = Status.statusSet;
 status:Set<String> = Label.LabelSet;
-
-task: Task= new Task();
-  constructor(private taskService: TaskApiService) { }
+  constructor(private taskService: TaskApiService,
+    private fb: FormBuilder) { }
 
   ngOnInit() 
   {
     this.getAllTask();
+    this.taskDetails = this.fb.group({
+      _id: [],
+      title: ['',[Validators.required]],
+      taskDetail: ['',[Validators.required]],
+      label: ['',[Validators.required]],
+      status: ['',[Validators.required]],
+      dueDate: ['',[Validators.required]],
+    })
   }
   addDetails(taskDetail: Task){
     this.taskService.postDetails(taskDetail).subscribe(
       () => {
+       this.addTask();
         this.getAllTask();
-        this.task = new Task();
       }
     );
   }
 
   update(task: Task){
-    this.task = task;
+    this.taskDetails.controls['_id'].setValue(task._id);
+    this.taskDetails.controls['title'].setValue(task.title);
+    this.taskDetails.controls['taskDetail'].setValue(task.taskDetail);
+    this.taskDetails.controls['dueDate'].setValue(task.dueDate);
+    this.taskDetails.controls['label'].setValue(task.label);
+    this.taskDetails.controls['status'].setValue(task.status);
   }
 
   getAllTask(){
@@ -48,7 +62,7 @@ task: Task= new Task();
     }
   }
   addTask(){
-    this.task = new Task();
+this.taskDetails.reset();
   }
 
   refresh(){

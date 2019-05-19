@@ -1,56 +1,73 @@
 <div class="container">
   <div>
-    <input type="text" class="form-control input" placeholder="search by title"/>
-    <button type="button" class="btn btn-info btn-md" data-toggle="modal" (click)="addTask()" data-target="#myModal">
-        <i class="fa fa-plus-circle" ></i> &nbsp; Add Task</button>
-
-<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        
-        <h4 class="modal-title">Modal Header</h4>
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-      </div>
-      <div class="modal-body">
-        <label>Title : </label> <input [(ngModel)]="task.title" type="text" class="form-control"/> <br/>
-        <label>Description : </label> <input [(ngModel)]="task.taskDetail" type="text" class="form-control"/><br/>
-        <label>Due Date : </label> <input [ngModel]="task.dueDate | date:'yyyy-MM-dd'" 
-        (ngModelChange)="task.dueDate = $event" type="date" class="form-control"/><br/>
-        <label>Status : </label>
-        <select  class="form-control" [(ngModel)]="task.status" [value]="task.status">
-            <option *ngFor="let stat of status">{{stat}}</option>
-          </select><br/>
-        <label>Label : </label>
-          <select class="form-control" [(ngModel)]="task.label" [value]="task.label">
-              <option *ngFor="let lab of label">{{lab}}</option>
-            </select>
-      </div>
-      <div class="modal-footer">
-          <button type="button" class="btn btn-success" (click)="addDetails(task)" data-dismiss="modal">Save</button>
-        <button type="button" class="btn btn-danger" (click)="refresh()"  data-dismiss="modal">Close</button>
-      </div>
+    <div class="input-group margin">
+      <input type="text" class="form-control width100 input" [(ngModel)]="searchData"
+        placeholder="search by title or description" />&nbsp;
+      <span class="input-group-btn">
+        <button type="button" class="btn btn-info btn-md" data-toggle="modal" (click)="addTask()"
+          data-target="#myModal">
+          <i class="fa fa-plus-circle"></i> &nbsp; Add Task</button>
+      </span>
     </div>
 
+
+
+    <!-- Modal -->
+
+
+    <div id="myModal" class="modal fade" role="dialog">
+      <div class="modal-dialog">
+
+        <!-- Modal content-->
+
+        <form [formGroup]="taskDetails" >
+        <div class="modal-content">
+          <div class="modal-header">
+            
+              <h4 class="modal-title">Task Details</h4>
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+          </div>
+          <div class="modal-body">
+
+            <label>Title : </label> <input formControlName="title"  type="text" class="form-control" /> <br />
+            <label>Description : </label> <input  formControlName="taskDetail" type="text"
+              class="form-control" /><br />
+            <label>Due Date : </label> <input formControlName="dueDate" type="date" class="form-control" /><br />
+            <label>Status : </label>
+            <select  class="form-control" formControlName="status">
+              <option *ngFor="let stat of status">{{stat}}</option>
+            </select><br />
+            <label>Label : </label>
+            <select  class="form-control" formControlName="label">
+              <option *ngFor="let lab of label">{{lab}}</option>
+            </select>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-success" [disabled]="!taskDetails.valid" (click)="addDetails(taskDetails.value)" data-dismiss="modal">Save</button>
+            <button type="button" class="btn btn-danger" (click)="refresh()" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+
+        </form>
+      </div>
+    </div>
   </div>
-</div>
-  </div>
-  <div class="box" *ngFor="let data of taskList">
+
+  <div class="box" *ngFor="let data of taskList | search: searchData">
     <div class="innerBox">
-        <div >{{data.title}}</div><br/>
-    <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#myModal" (click)="update(data)">
-        <i class="fa fa-pencil-square-o"></i></button>
-        <button type="button" class="btn btn-danger btn-sm" (click)="delete(data._id)">
-            <i class="fa fa-trash"></i></button>
-    <hr>
-    <label class="label">Description:</label> {{data.taskDetail}}<br/>
-    <label class="label">Due Date:</label> {{data.dueDate | date:'yyyy-MM-dd'}}<br/>
-    <label class="label">Status:</label> {{data.status}}<br/>
-    <label class="label">Label:</label> <span >{{data.label }}</span><br/>
-    <label class="label">Create Date:</label> {{data.createdDate | date:'yyyy-MM-dd'}}<br/>
+      <div><label class="titleData">{{data.title}}</label>
+        <button type="button" class="btn btn-info btn-sm btnPos" data-toggle="modal" data-target="#myModal"
+          (click)="update(data)">
+          <i class="fa fa-pencil-square-o"></i></button>
+        <button type="button" class="btn btn-danger btn-sm btnPos" (click)="delete(data._id)">
+          <i class="fa fa-trash"></i></button>
+      </div>
+      <hr>
+      <label class="label">Description: </label> {{data.taskDetail}}<br />
+      <label class="label">Due Date: </label> {{data.dueDate | date:'yyyy-MM-dd'}}<br />
+      <label class="label">Status: </label> {{data.status}}<br />
+      <label class="label">Label: </label> {{data.label }}<br />
+      <label class="label">Create Date: </label> {{data.createDate | date:'yyyy-MM-dd'}}<br />
     </div>
   </div>
 </div>
