@@ -26,7 +26,7 @@ status:Set<String> = Label.LabelSet;
       taskDetail: ['',[Validators.required]],
       label: ['',[Validators.required]],
       status: ['',[Validators.required]],
-      dueDate: ['',[Validators.required]],
+      dueDate: [null,[Validators.required]],
     })
   }
   addDetails(taskDetail: Task){
