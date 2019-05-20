@@ -31,7 +31,8 @@
             <label>Title : </label> <input formControlName="title"  type="text" class="form-control" /> <br />
             <label>Description : </label> <input  formControlName="taskDetail" type="text"
               class="form-control" /><br />
-            <label>Due Date : </label> <input formControlName="dueDate" [value]="taskDetails.get('dueDate').value | date:'yyyy-MM-dd'" type="date" class="form-control" /><br />
+              {{taskDetails.get('dueDate').value}}
+            <label>Due Date : </label> <input formControlName="dueDate" [value]="(taskDetails.get('dueDate').value) | date:'yyyy-MM-dd'" type="date" class="form-control" /><br />
             <label>Status : </label>
             <select  class="form-control" formControlName="status">
               <option *ngFor="let stat of status">{{stat}}</option>
