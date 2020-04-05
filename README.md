@@ -25,10 +25,6 @@ Todo-List-FE is a front-end project which consumes all the APIs defined by my To
 - Backend application will be up and running on http://localhost:8006/
 
 
-![Uploading image.png…]()
-
-
-
 
 
 
