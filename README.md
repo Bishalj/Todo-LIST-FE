@@ -1,27 +1,30 @@
-# TodoList
+# Todo-List-FE
+Todo list FE is made on Angular 7 framework. It is which is a UI dashboard to manage the day to day task.
+Todo-List-FE is a front-end project which consumes all the APIs defined by my Todo-LIST-BE repository (which includes all the APIs which are needed by the UI).
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.0.
+## Dependencies required to run the Todo-List-FE application:
+1. git clone https://github.com/Bishalj/Todo-LIST-FE.git
+2. NPM 6.3.0 (or higher version)
+3. Angular 7
+4. Angular CLI
+5. node v8.11.3
 
-## Development server
+## Command to run the Todo-List-FE application
+- npm install
+- ng serve
+- UI application will be up and running on http://localhost:4200/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Dependencies required to run the Todo-List-BE application:
+1. git clone https://github.com/Bishalj/Todo-List-BE.git
+2. Gradle 5.4.1
+3. MongoDB running on port 27017 in local
+4. Java version 8
 
-## Code scaffolding
+## Command to run the Todo-List-BE application
+- gradle bootRun
+- Backend application will be up and running on http://localhost:8006/
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
