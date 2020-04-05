@@ -24,6 +24,9 @@ Todo-List-FE is a front-end project which consumes all the APIs defined by my To
 - gradle bootRun
 - Backend application will be up and running on http://localhost:8006/
 
+## View of the running application
+![alt text](https://raw.githubusercontent.com/Bishalj/Todo-LIST-FE/master/src/assets/Todo%20List.png)
+
 
 
 
